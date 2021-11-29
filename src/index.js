@@ -1,13 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-
+import LandingPage from './Components/LandingPage';
+import ErrorPage from './Components/ErrorPage';
+import TicketsPage from './Components/TicketsPage';
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<LandingPage/>}/>
+      <Route path="Error" element={<ErrorPage/>}/>
+      <Route path="Tickets" element={<TicketsPage/>}/>
+    </Routes>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 
