@@ -19,13 +19,13 @@ app.get("/getTickets", async (req, res) => {
             url: url,
             headers:{"Authorization" : "Basic " + token}
         })
-        console.log("toot",result.data.tickets)
-        res.json({tickets:result.data.tickets})
+        res.status(200).json({tickets:result.data.tickets})
     }
     catch(err){
-        console.log("monkah")
-        console.log(err, "tee")
-        res.json({error: err.data})
+        if('response' in err)
+            res.status(err.response.status).json({error: err.response.data.error})
+        else
+            res.status(500).json({error: "Unexpected Server Error"})
     }
 })
 
