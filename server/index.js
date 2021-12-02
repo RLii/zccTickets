@@ -11,13 +11,15 @@ app.use(express.static("../client/src"))
 
 const token = Buffer.from("richlii@outlook.com/token:6lZGByHibQEd2eJUWscFFTPcrKINrPxvHHcJB4Xk").toString("base64")
 
+const authHeader = {"Authorization" : "Basic " + token}
+
 app.get("/getTickets", async (req, res) => {
     const url = "https://zccliitickets.zendesk.com/api/v2/tickets";
     try{
         const result = await axios({
             method: 'get',
             url: url,
-            headers:{"Authorization" : "Basic " + token}
+            headers:authHeader
         })
         res.status(200).json({tickets:result.data.tickets})
     }
