@@ -41,6 +41,7 @@ function TicketsPage({ticketsArray}) {
     return(
         <Box sx={{width:1, minHeight:"100%", backgroundColor:"pink", justifyContent:'space-between'}} alignItems="center" justifyContent="space-between" display="flex">
             <Grid container display ="flex" alignItems="center" justifyContent="center" direction="column">
+                <Typography variant='h2' color={"whitesmoke"}>Your Tickets</Typography>
                 <Grid container display ="flex" alignItems="center" justifyContent="center" spacing ={3}>
                     {currentPageArray.length > 0? 
                         <Grid container item spacing={3}>
@@ -133,6 +134,9 @@ function TicketsPage({ticketsArray}) {
                 <DialogContent>
                     <Typography>
                         Assignee ID: {dialogItem.assignee_id}
+                    </Typography>
+                    <Typography>
+                        Brand ID: {dialogItem.brand_id}
                     </Typography>
                     <Typography>
                         Description: {dialogItem.description}

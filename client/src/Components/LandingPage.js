@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ErrorPage from "./ErrorPage";
 import TicketsPage from "./TicketsPage";
+import { Typography } from "@mui/material";
 
 const fetchModes = {
     Loading:'Loading',
@@ -43,7 +44,7 @@ function LandingPage() {
 
     return(
         fetchStatus === fetchModes.Loading ? 
-        <p>Loading</p>:
+        <Typography variant="h1" textAlign="center">Loading</Typography>:
         fetchStatus === fetchModes.Success ?
         <TicketsPage
             ticketsArray={result}

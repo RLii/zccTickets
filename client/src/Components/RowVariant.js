@@ -9,7 +9,7 @@ function RowVariant({array, openDialog}){
             {array.map((item)=>{
                 return(
                     <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <Card>
+                        <Card sx={{maxHeight:300, minHeight:300}}>
                             <CardHeader
                                 action={
                                     <IconButton onClick={()=>{
