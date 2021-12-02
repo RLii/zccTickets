@@ -1,15 +1,24 @@
 import { useState, useEffect } from "react"
-import { Box, Grid, Pagination, styled, Button, List, ListItem, ListItemText } from "@mui/material"
+import { 
+    Box, 
+    Grid, 
+    Pagination, 
+    Button, 
+    Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography 
+} from "@mui/material"
+import { CloseRounded } from "@mui/icons-material"
 import React from "react"
 import RowVariant from "./RowVariant"
 
 function TicketsPage({ticketsArray}) {
     const [pageGroups, setPageGroups] = useState(0)
     const [currentPage, setCurrentPage] = useState(1)
+    const [dialogItem, setDialogItem] = useState({})
+    const [openDialog, setOpenDialog] = useState(false)
     let currentPageArray = ticketsArray.slice((currentPage-1) * 25, currentPage * 25)
 
     useEffect(()=>{
-        console.log((ticketsArray.length%25) == 0, "asd", ticketsArray.length/25, ticketsArray.length)
+        console.log((ticketsArray.length%25) == 0, "asd", ticketsArray.length/25, ticketsArray.length, ticketsArray)
         if((ticketsArray.length%25) == 0)
             setPageGroups(Math.floor(ticketsArray.length/25)) 
         else
@@ -20,13 +29,19 @@ function TicketsPage({ticketsArray}) {
     function GetRow(rowNum) {
         let rowArray = currentPageArray.slice((rowNum - 1) * 5, rowNum * 5);
         return (
-            <RowVariant array={rowArray}/>
+            <RowVariant 
+                array={rowArray}    
+                openDialog={(item)=>{
+                    setDialogItem(item);
+                    setOpenDialog(true);
+                }}
+            />
         )
     }
     return(
-        <Box sx={{width:1, height:1, backgroundColor:"pink"}} alignItems="center" justifyContent="center" display="flex">
+        <Box sx={{width:1, minHeight:"100%", backgroundColor:"pink", justifyContent:'space-between'}} alignItems="center" justifyContent="space-between" display="flex">
             <Grid container display ="flex" alignItems="center" justifyContent="center" direction="column">
-                <Grid container display ="flex" alignItems="center" justifyContent="center" spacing ={15}>
+                <Grid container display ="flex" alignItems="center" justifyContent="center" spacing ={3}>
                     {currentPageArray.length > 0? 
                         <Grid container item spacing={3}>
                             {GetRow(1)}
@@ -99,6 +114,37 @@ function TicketsPage({ticketsArray}) {
                     setCurrentPage(page)
                 }}/>
             </Grid>
+            <Dialog
+                open={openDialog}
+            >
+                <DialogTitle>
+                    {dialogItem.subject}
+                    <IconButton
+                        sx={{
+                            position:'absolute',
+                            right:8,
+                            top:8,
+                        }}
+                        onClick={()=>{setOpenDialog(false)}}
+                    >
+                        <CloseRounded/>
+                    </IconButton>
+                </DialogTitle>
+                <DialogContent>
+                    <Typography>
+                        Assignee ID: {dialogItem.assignee_id}
+                    </Typography>
+                    <Typography>
+                        Description: {dialogItem.description}
+                    </Typography>
+                    <Typography>
+                        Status: {dialogItem.status}
+                    </Typography>
+                    <Typography>
+                        Created At: {dialogItem.created_at}
+                    </Typography>
+                </DialogContent>
+            </Dialog>
         </Box>
     )
 }

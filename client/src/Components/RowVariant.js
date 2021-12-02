@@ -1,48 +1,59 @@
 import React from "react";
-import { Grid, Button, Typography } from "@mui/material";
-
-function RowVariant({array}){
+import { Grid, Button, Typography, Card, CardHeader, CardContent, IconButton } from "@mui/material";
+import { OpenInFullRounded } from '@mui/icons-material' 
+function RowVariant({array, openDialog}){
     return(
         array.length === 5?
         <React.Fragment>
             <Grid item md={1}/>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button sx={{width:1}} onClick={()=>{console.log(array)}}>
-                    <Typography>
-                        asd
-                    </Typography>
-                </Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
+            {array.map((item)=>{
+                return(
+                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
+                        <Card>
+                            <CardHeader
+                                action={
+                                    <IconButton onClick={()=>{
+                                        openDialog(item);
+                                    }}>
+                                        <OpenInFullRounded/>
+                                    </IconButton>
+                                }
+                                title={item.subject}
+                                subheader={"Created At " + item.created_at}
+                            />
+                            <CardContent>
+                                <Typography>
+                                    {item.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>)
+            })}
             <Grid item md={1}/>
         </React.Fragment>
         :
         array.length === 4?
         <React.Fragment>
             <Grid item md={2}/>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
+            {array.map((item)=>{
+                return(
+                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
+                        <Card>
+                            <CardHeader
+                                title={item.subject}
+                                subheader={"Created At " + item.created_at}
+                            />
+                            <IconButton>
+                                <OpenInFullRounded/>
+                            </IconButton>
+                            <CardContent>
+                                <Typography>
+                                    {item.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>)
+            })}
             <Grid item md={2}/>
         </React.Fragment>
         :
@@ -50,15 +61,25 @@ function RowVariant({array}){
         <React.Fragment>
             <Grid item md={1}/>
             <Grid item md={2}/>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
+            {array.map((item)=>{
+                return(
+                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
+                        <Card>
+                            <CardHeader
+                                title={item.subject}
+                                subheader={"Created At " + item.created_at}
+                            />
+                            <IconButton>
+                                <OpenInFullRounded/>
+                            </IconButton>
+                            <CardContent>
+                                <Typography>
+                                    {item.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>)
+            })}
             <Grid item md={2}/>
             <Grid item md={1}/>
         </React.Fragment>
@@ -67,12 +88,25 @@ function RowVariant({array}){
         <React.Fragment>
             <Grid item md={2}/>
             <Grid item md={2}/>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
+            {array.map((item)=>{
+                return(
+                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
+                        <Card>
+                            <CardHeader
+                                title={item.subject}
+                                subheader={"Created At " + item.created_at}
+                            />
+                            <IconButton>
+                                <OpenInFullRounded/>
+                            </IconButton>
+                            <CardContent>
+                                <Typography>
+                                    {item.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>)
+            })}
             <Grid item md={2}/>
             <Grid item md={2}/>
         </React.Fragment>
@@ -82,9 +116,25 @@ function RowVariant({array}){
             <Grid item md={1}/>
             <Grid item md={2}/>
             <Grid item md={2}/>
-            <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                <Button>asd</Button>
-            </Grid>
+            {array.map((item)=>{
+                return(
+                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
+                        <Card>
+                            <CardHeader
+                                title={item.subject}
+                                subheader={"Created At " + item.created_at}
+                            />
+                            <IconButton>
+                                <OpenInFullRounded/>
+                            </IconButton>
+                            <CardContent>
+                                <Typography>
+                                    {item.description}
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                    </Grid>)
+            })}
             <Grid item md={2}/>
             <Grid item md={2}/>
             <Grid item md={1}/>
