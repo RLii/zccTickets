@@ -31,11 +31,20 @@ function LandingPage() {
                 setFetchStatus(fetchModes.Error)
             }
         }catch(err){
-            setResult({
-                status:err.response.status,
-                errorMsg:err.response.data.error
-            })
-            setFetchStatus(fetchModes.Error)
+            console.log(typeof err, JSON.stringify(err), err.response)
+            if(err.response){
+                setResult({
+                    status:err.response.status,
+                    errorMsg:err.response.data.error
+                })
+                setFetchStatus(fetchModes.Error)
+            }else{
+                setResult({
+                    status:503,
+                    errorMsg:"Server Unavailable"
+                })
+                setFetchStatus(fetchModes.Error)
+            }
         }
     }, [])
     

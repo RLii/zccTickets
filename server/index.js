@@ -9,11 +9,11 @@ app.use(cors())
 
 app.use(express.static("../client/src"))
 
-const token = "richlii@outlook.com/token:6lZGByHibQEd2eJUWscFFTPcrKINrPxvHHcJB4Xk";
+const token = "";//Fill in your token here
 
 const getToken = () => Buffer.from(token).toString("base64")
 
-const getAuthHeader = ()=> {return {"Authorization" : "Basic " + getToken()}}
+const getAuthHeader = ()=> {return {"Authorization" : "Basic " + getToken()}}//Change the header depending on which token type you are using
 
 const url = ()=>"https://zccliitickets.zendesk.com/api/v2/tickets.json?page[size]=100";
 
