@@ -18,7 +18,6 @@ function TicketsPage({ticketsArray}) {
     let currentPageArray = ticketsArray.slice((currentPage-1) * 25, currentPage * 25)
 
     useEffect(()=>{
-        console.log((ticketsArray.length%25) == 0, "asd", ticketsArray.length/25, ticketsArray.length, ticketsArray)
         if((ticketsArray.length%25) == 0)
             setPageGroups(Math.floor(ticketsArray.length/25)) 
         else

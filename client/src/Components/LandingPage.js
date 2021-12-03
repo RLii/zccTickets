@@ -17,7 +17,6 @@ function LandingPage() {
     useEffect(()=>{
         axios.get("http://localhost:3001/getTickets")
         .then(res =>{ 
-            console.log(res)
             if('tickets' in res.data)
             {
                 setResult(res.data.tickets)

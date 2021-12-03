@@ -2,7 +2,6 @@
 import { Typography, Paper, Box, Grid } from "@mui/material"
 function ErrorPage({status, error}) {
 
-    console.log(error)
     return(
         <Grid
           container
