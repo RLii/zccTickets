@@ -1,5 +1,7 @@
 ### Getting started
-open command prompts, one to client and one to server
+add your token to /server/index.js and change the auth header format depending on which authentication you are using
+
+open 2 command prompts, one in the client folder and one in server
 
 run npm install on both, and you are ready to go.
 
