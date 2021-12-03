@@ -9,32 +9,37 @@ app.use(cors())
 
 app.use(express.static("../client/src"))
 
-const token = Buffer.from("richlii@outlook.com/token:6lZGByHibQEd2eJUWscFFTPcrKINrPxvHHcJB4Xk").toString("base64")
+const token = "richlii@outlook.com/token:6lZGByHibQEd2eJUWscFFTPcrKINrPxvHHcJB4Xk";
 
-const authHeader = {"Authorization" : "Basic " + token}
+const getToken = () => Buffer.from(token).toString("base64")
 
-let tickets = [];
+const getAuthHeader = ()=> {return {"Authorization" : "Basic " + getToken()}}
+
+const url = ()=>"https://zccliitickets.zendesk.com/api/v2/tickets.json?page[size]=100";
+
 app.get("/getTickets", async (req, res) => {
-    const url = "https://zccliitickets.zendesk.com/api/v2/tickets.json?page[size]=100";
+    let tickets = [];
+
     try{
         
         let result = await axios({
             method: 'get',
-            url: url,
-            headers:authHeader
+            url: url(),
+            headers:getAuthHeader()
         })
         tickets = result.data.tickets;
         while(result.data.meta.has_more){
             result = await axios({
                 method: 'get',
                 url: result.data.links.next,
-                headers:authHeader
+                headers:getAuthHeader()
             })
             tickets = tickets.concat(result.data.tickets)
         }
         res.status(200).json({tickets:tickets})
     }
     catch(err){
+        console.log(err)
         if('response' in err)
             res.status(err.response.status).json({error: err.response.data.error})
         else
@@ -45,3 +50,7 @@ app.get("/getTickets", async (req, res) => {
 app.listen(PORT, ()=>{
     console.log(`Server listening on ${PORT}`)
 })
+
+exports.getToken = getToken;
+exports.getAuthHeader = getAuthHeader;
+exports.url = url;

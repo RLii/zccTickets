@@ -9,14 +9,15 @@ const fetchModes = {
     Success:'Success',
     Error:'Error',
 }
-
+export const fetchUrl = "http://localhost:3001/getTickets"
+export const fetchTickets = async ()=>{return await axios.get(fetchUrl)}
 function LandingPage() {
     const [result, setResult] = useState([])
     const [fetchStatus, setFetchStatus] = useState(fetchModes.Loading)
     
-    useEffect(()=>{
-        axios.get("http://localhost:3001/getTickets")
-        .then(res =>{ 
+    useEffect(async ()=>{
+        try{
+            const res = await fetchTickets()
             if('tickets' in res.data)
             {
                 setResult(res.data.tickets)
@@ -29,14 +30,13 @@ function LandingPage() {
                 })
                 setFetchStatus(fetchModes.Error)
             }
-        })
-        .catch(err=>{
+        }catch(err){
             setResult({
                 status:err.response.status,
                 errorMsg:err.response.data.error
             })
             setFetchStatus(fetchModes.Error)
-        })
+        }
     }, [])
     
 

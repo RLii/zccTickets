@@ -9,9 +9,8 @@ function RowVariant({array, openDialog}){
             <Grid item md={1}/>
             {array.map((item)=>{
                 return(
-                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <TicketCard item={item} openDialog={openDialog}/>
-                    </Grid>)
+                    <TicketCard item={item} openDialog={openDialog}/>
+                )
             })}
             <Grid item md={1}/>
         </React.Fragment>
@@ -21,9 +20,8 @@ function RowVariant({array, openDialog}){
             <Grid item md={2}/>
             {array.map((item)=>{
                 return(
-                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <TicketCard item={item} openDialog={openDialog}/>
-                    </Grid>)
+                    <TicketCard item={item} openDialog={openDialog}/>
+                )
             })}
             <Grid item md={2}/>
         </React.Fragment>
@@ -34,9 +32,8 @@ function RowVariant({array, openDialog}){
             <Grid item md={2}/>
             {array.map((item)=>{
                 return(
-                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <TicketCard item={item} openDialog={openDialog}/>
-                    </Grid>)
+                    <TicketCard item={item} openDialog={openDialog}/>
+                )
             })}
             <Grid item md={2}/>
             <Grid item md={1}/>
@@ -48,9 +45,8 @@ function RowVariant({array, openDialog}){
             <Grid item md={2}/>
             {array.map((item)=>{
                 return(
-                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <TicketCard item={item} openDialog={openDialog}/>
-                    </Grid>)
+                    <TicketCard item={item} openDialog={openDialog}/>
+                )
             })}
             <Grid item md={2}/>
             <Grid item md={2}/>
@@ -63,9 +59,8 @@ function RowVariant({array, openDialog}){
             <Grid item md={2}/>
             {array.map((item)=>{
                 return(
-                    <Grid display ="flex" alignItems="center" justifyContent="center" item xs={12} md={2}>
-                        <TicketCard item={item} openDialog={openDialog}/>
-                    </Grid>)
+                    <TicketCard item={item} openDialog={openDialog}/>
+                )
             })}
             <Grid item md={2}/>
             <Grid item md={2}/>

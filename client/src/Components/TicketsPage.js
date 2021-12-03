@@ -4,18 +4,22 @@ import {
     Grid, 
     Pagination, 
     Button, 
-    Dialog, DialogTitle, DialogContent, DialogActions, IconButton, Typography 
+    Dialog, DialogTitle, DialogContent, IconButton, Typography 
 } from "@mui/material"
 import { CloseRounded } from "@mui/icons-material"
 import React from "react"
 import RowVariant from "./RowVariant"
 
+export const getArraySlice = (array, sliceLength, startingIndex)=>{
+    return array.slice((startingIndex-1) * sliceLength, startingIndex * sliceLength);
+}
+
 function TicketsPage({ticketsArray}) {
-    const [pageGroups, setPageGroups] = useState(0)
-    const [currentPage, setCurrentPage] = useState(1)
-    const [dialogItem, setDialogItem] = useState({})
-    const [openDialog, setOpenDialog] = useState(false)
-    let currentPageArray = ticketsArray.slice((currentPage-1) * 25, currentPage * 25)
+    const [pageGroups, setPageGroups] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [dialogItem, setDialogItem] = useState({});
+    const [openDialog, setOpenDialog] = useState(false);
+    let currentPageArray = getArraySlice(ticketsArray, 25, currentPage);
 
     useEffect(()=>{
         if((ticketsArray.length%25) == 0)
@@ -26,7 +30,7 @@ function TicketsPage({ticketsArray}) {
 
         
     function GetRow(rowNum) {
-        let rowArray = currentPageArray.slice((rowNum - 1) * 5, rowNum * 5);
+        let rowArray = getArraySlice(currentPageArray, 5, rowNum)
         return (
             <RowVariant 
                 array={rowArray}    
