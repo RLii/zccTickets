@@ -1,13 +1,14 @@
 import React from "react"
 import { Card, CardHeader, IconButton, CardContent, Typography } from "@mui/material"
 import { OpenInFullRounded } from "@mui/icons-material"
-function TicketCard(){
+function TicketCard({item, openDialog}){
 
-    return (<Card>
+    return (
+        <Card sx={{maxHeight:300, minHeight:300}}>
         <CardHeader
             action={
                 <IconButton onClick={()=>{
-                    
+                    openDialog(item);
                 }}>
                     <OpenInFullRounded/>
                 </IconButton>
@@ -20,5 +21,7 @@ function TicketCard(){
                 {item.description}
             </Typography>
         </CardContent>
-    </Card>)
+    </Card>
+    )
 }
+export default TicketCard

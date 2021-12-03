@@ -32,7 +32,6 @@ function LandingPage() {
             }
         })
         .catch(err=>{
-            console.log(err.response, "wtfff")
             setResult({
                 status:err.response.status,
                 errorMsg:err.response.data.error
